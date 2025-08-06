@@ -1,0 +1,32 @@
+Head e Tail
+```{r}
+esoph #Dataframe
+
+head(esoph)
+tail(esoph)
+```
+Dimensões
+```{r}
+dim(esoph)
+```
+Comprimento
+```{r}
+length(islands )
+```
+Nome das colunas
+```{r}
+colnames(iris)
+```
+Nome das linhas
+```{r}
+rownames(esoph)
+```
+Resumo
+```{r}
+summary(esoph)
+```
+Escolher arquivo
+```{r}
+x = file.choose()
+```
+

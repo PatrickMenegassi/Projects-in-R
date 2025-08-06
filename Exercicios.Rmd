@@ -1,0 +1,48 @@
+```{r}
+ana <- 14
+paulo <- 12
+
+if(paulo > ana){
+  print("Menino é mais velho.")
+} else{
+  print("Menina é mais velha.")
+}
+```
+
+```{r}
+typeof(BOD)
+```
+```{r}
+vetor = list(1,2,3,4,5,6,7,8,9,10)
+for (variable in vetor) {
+  if(variable %% 2 == 0){
+    print(variable)
+    print("O número é par")
+  }
+}
+```
+
+```{r}
+women
+
+tail(women, n=10)
+```
+
+```{r}
+novairis = iris[50:100,c(2,3)]
+plot(novairis)
+```
+
+```{r}
+vet1 = c(1,2,3,4)
+vet2 = c(4,3,2,1)
+print(vet1 + vet2)
+```
+
+```{r}
+dim(CO2)[1]
+dim(CO2)[2]
+rownames(CO2)
+colnames(CO2)
+```
+

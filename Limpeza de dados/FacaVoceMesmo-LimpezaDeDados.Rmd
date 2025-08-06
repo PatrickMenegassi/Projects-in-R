@@ -1,0 +1,68 @@
+```{r}
+#Importar dados
+dados = read.csv("Tempo.csv", sep=";", na.strings="", stringsAsFactors = T)
+head(dados)
+summary(dados)
+dados
+```
+```{r}
+#aparencia
+counts = table(dados$Aparencia)
+counts
+barplot(counts, main="Aparencia", xlab="Aparencia")
+#Gênero
+counts = table(dados$Vento)
+counts
+barplot(counts, main="Vento", xlab="Vento")
+#jogar
+counts = table(dados$Jogar)
+counts
+barplot(counts, main="Jogar", xlab="Jogar")
+```
+
+Explorando as colunas numéricas
+```{r}
+summary(dados$Temperatura)
+boxplot(dados$Temperatura)
+hist(dados$Temperatura)
+```
+```{r}
+summary(dados$Umidade)
+boxplot(dados$Umidade)
+hist(dados$Umidade)
+```
+
+Visualizar dados faltantes
+```{r}
+dados[!complete.cases(dados),]
+```
+
+Tratar dados, coluna Aparencia
+Aparencia deve ter apenas sol, chuva e nublado
+```{r}
+summary(dados$Aparencia) # Visualiziar os valores
+dados[is.na(dados$Aparencia),]
+dados[dados$Aparencia == "menos",]$Aparencia = "sol"
+summary(dados$Aparencia) # Conferencia dos dados
+dados$Aparencia =   factor(dados$Aparencia) # Remover levels não utilizados
+summary(dados$Aparencia) # Visualizar novamente
+```
+Tratar dados, coluna Umidade
+Umidade deve ficar entre 0 e 100
+```{r}
+summary(dados$Umidade)
+dados[is.na(dados$Umidade),]
+median(dados$Umidade,na.rm = T)
+dados[is.na(dados$Umidade),]$Umidade = median(dados$Umidade, na.rm = T)
+dados[dados$Umidade < 0 | dados$Umidade > 100, ]$Umidade = median(dados$Umidade, na.rm = T)
+dados[dados$Umidade < 0 | dados$Umidade > 100] # Podemos conferir se tem alguma coluna errada
+summary(dados$Umidade)
+```
+Tratar dados, coluna vento
+```{r}
+summary(dados$Vento)
+dados[is.na(dados$Vento),]
+dados[is.na(dados$Vento),]$Vento = "FALSO"
+summary(dados$Vento)
+```
+
