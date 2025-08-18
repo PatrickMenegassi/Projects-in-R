@@ -1,0 +1,25 @@
+Quando usar Distribuição de Poisson
+1. Os eventos são independentes
+2. A taxa média de ocorrência é constante
+3. Dois eventos não podem ocorrer exatamente ao mesmo tempo
+
+
+O número de acidentes em um dia é igual a 2, qual a probabilidade de ocorrerem 3 em 1 dia?
+```{r}
+dpois(3, lambda=2)
+```
+O numero de acidentes em um dia é igual a 2, qual a probabilidade de ocorrerem 3 ou MENOS em 1 dia?
+```{r}
+ppois(3, lambda = 2)
+```
+O numero de acidentes em um dia é igual a 2, qual a probabilidade de ocorrerem MENOS do que 3 em 1 dia?
+```{r}
+ppois(2, lambda=2)
+dpois(0, lambda = 2) + dpois(1, lambda = 2) + dpois(2, lambda = 2)
+```
+O numero de acidentes em um dia é igual a 2, qual a probabilidade de ocorrerem MAIS do que 3 em um dia?
+```{r}
+ppois(3, lambda=2, lower.tail = F)
+1 - ppois(3, lambda=2)
+```
+

@@ -1,0 +1,28 @@
+Para que serve o Qui-Quadrado
+1. Teste de hipóteses sobre variâncias
+2. Teste de indepedências (ex: verificar se duas variáveis categóricas estão relacionadas)
+3. Teste de aderência (ex: verificar se os dados seguem uma distribuição esperada, como normal ou uniforme)
+
+Criamos o conjunto de dados para teste
+```{r}
+novela = matrix(c(19,6,43,32), nrow=2, byrow=T)
+rownames(novela) = c("Masculino", "Feminino")
+colnames(novela) = c("Assiste", "Não Assiste")
+novela
+```
+
+Executar Qui-Quadrado
+Valor de p é maior que 0,05 não há evidências de diferença significativa (hipótese nula)
+```{r}
+chisq.test(novela)
+```
+Alteramos a proporção de homens que assiste e não
+Executamos o teste novamente, agora valor de p menor que 0,05
+```{r}
+novela = matrix(c(22,3,43,32), nrow=2, byrow=T)
+rownames(novela) = c("Masculino", "Feminino")
+colnames(novela) = c("Assiste", "Não Assiste")
+novela
+chisq.test(novela)
+```
+

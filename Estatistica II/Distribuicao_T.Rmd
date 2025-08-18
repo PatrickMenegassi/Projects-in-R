@@ -1,0 +1,21 @@
+Quando usar Distribuição T de Student
+1. O tamanho da amostra é pequeno
+2. A variância populacional é desconhecida
+3. Queremos estimar a média da população ou testar hipóteses
+
+Salario de cientistas é de 75 reais por hora. Amostra 9. S=10. Qual a probabilidade de ser menor que 80 hora?
+t=1.5, graus de liberdade 
+```{r}
+pt(1.5, 8)
+```
+Qual a probabilidade de ser maior que 80
+```{r}
+# As duas formas estão certas
+pt(1.5, 8, lower.tail = F)
+1 - pt(1.5,8)
+```
+Somando as duas caudas
+```{r}
+pt(1.5, 8) + pt(1.5, 8, lower.tail = F)
+```
+

@@ -1,0 +1,39 @@
+Quando usar o ANOVA
+1. Variação entre grupos (diferenças nas médias dos grupos)
+2. Variação dentro dos grupos (diferença entre indivíduos de um mesmo grupo)
+
+Carrega dados
+```{r}
+tratamento = read.csv("anova.csv", sep=";")
+tratamento
+```
+
+Visualizamos a distribuição dos remedios por horas
+```{r}
+boxplot(tratamento$Horas ~ tratamento$Remedio)
+```
+Executamos Análise de Variância
+Observar valoro de p maior que 0,05 (Pr(>F))
+Hihpótese nula de que não há diferença significativa
+```{r}
+an = aov(Horas ~ Remedio, data=tratamento)
+summary(an)
+```
+
+Anova de dois fatores
+Nenhum valor de P mostra diferença significativa
+```{r}
+an = aov(Horas ~ Remedio * Sexo, data=tratamento)
+summary(an)
+```
+
+Se houver diferença o teste de Tukey é executado
+```{r}
+tukey = TukeyHSD(an)
+tukey
+```
+Gráficos de teste
+```{r}
+plot(tukey)
+```
+
