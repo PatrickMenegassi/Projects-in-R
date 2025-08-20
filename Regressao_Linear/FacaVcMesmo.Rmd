@@ -1,0 +1,33 @@
+Importando os Dados
+```{r}
+dados = read.csv("slr12.csv",sep = ";")
+dados
+```
+
+Correlação das variaves
+```{r}
+cor(dados)
+corrgram(dados, order=TRUE, lower.panel = panel.shade,
+         upper.panel = panel.pie, text.panel = panel.txt,
+         main="Investimento")
+```
+Modelo
+```{r}
+modelo = lm(CusInic ~ FrqAnual, data=dados)
+modelo
+```
+Visualização da relação entre variáveis e linha de melhor ajuste
+```{r}
+plot(CusInic ~ FrqAnual, data=dados, ylab= "Investimento Inicial", xlab="Taxa Anual", main="Investimentos")
+abline(modelo)
+```
+```{r}
+#usando o modelo
+#valor anual da franquina
+valr =  1300
+#prevendo
+prev =  predict(modelo,data.frame(FrqAnual = valr))
+prev = paste0("Previsão de Custo Inicial R$: ",round(prev,2))
+print(prev)
+```
+
